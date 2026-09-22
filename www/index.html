@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LUMEN</title><link rel="manifest" href="manifest.webmanifest">
+<style>
+:root{--bg:#07111f;--card:#0d1b2e;--text:#eef7ff;--muted:#91a4b8;--on:#ffe66d;--accent:#73d7ff;--good:#7ff0b2}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -10%,#244d70 0,#10263e 28%,#07111f 68%);color:var(--text);font-family:Arial,sans-serif;min-height:100vh;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 20% 30%,#5ed7ff0d,transparent 24%),radial-gradient(circle at 80% 70%,#ffe66d0b,transparent 24%);z-index:-1}
+button{border:0;border-radius:16px;padding:14px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#17314d;color:white}
+button:hover{filter:brightness(1.12)}.app{max-width:760px;margin:auto;padding:18px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.logo{font-size:30px;font-weight:900;letter-spacing:3px}.coins{background:#10243a;padding:9px 13px;border-radius:20px}.screen{display:none}.screen.active{display:block}.card{background:rgba(13,27,46,.94);border:1px solid #1e3853;border-radius:24px;padding:22px;box-shadow:0 18px 50px #0005}.hero{text-align:center;padding:36px 20px}.hero h1{font-size:52px;margin:0 0 8px}.hero p{color:var(--muted);line-height:1.5}.menu{display:grid;gap:12px;margin-top:24px}.menu button{font-size:18px;padding:17px}.worlds,.levels{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.world,.level{min-height:100px;text-align:left}.world.locked,.level.locked{opacity:.42;cursor:not-allowed}.world small,.level small{display:block;color:var(--muted);margin-top:7px}.back{margin-bottom:14px;background:#10243a}.gamehead{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:10px}.progress{height:6px;background:#10243a;border-radius:99px;overflow:hidden;margin:0 4px 12px}.progress>div{height:100%;width:0;background:linear-gradient(90deg,#73d7ff,#ffe66d);transition:width .25s}.stats{display:flex;gap:8px;flex-wrap:wrap}.pill{background:#10243a;padding:8px 11px;border-radius:14px;font-size:14px}.board{width:min(92vw,520px);aspect-ratio:1;margin:20px auto;display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.cell{border-radius:14px;background:linear-gradient(145deg,#172b42,#0f2033);border:1px solid #2b4864;box-shadow:inset 0 0 15px #0007,0 5px 12px #0003;transition:transform .12s,filter .18s,box-shadow .18s;min-width:0}.cell:active{transform:scale(.93)}.cell.on{background:radial-gradient(circle at 35% 30%,#fffbd1,#ffe66d 55%,#e2a82c);box-shadow:0 0 24px #ffe66d99,inset 0 0 12px #fff9,0 5px 16px #0004}.actions{display:flex;gap:9px;justify-content:center;flex-wrap:wrap}.primary{background:#23779c}.green{background:#1c8a61}.danger{background:#7b3545}.modal{position:fixed;inset:0;background:#0009;display:none;align-items:center;justify-content:center;padding:20px}.modal.show{display:flex}.modal .card{max-width:440px;width:100%;text-align:center}.modal button{width:100%;margin-top:10px}.stars{font-size:28px;letter-spacing:4px}.hint{color:#ffe66d;min-height:24px;text-align:center}.langrow{display:flex;gap:8px;flex-wrap:wrap}.langrow button.active{outline:2px solid var(--accent)}.tutorial-demo{display:grid;gap:7px;width:min(80vw,300px);margin:20px auto}.tutorial-demo .cell{aspect-ratio:1}.small{color:var(--muted);font-size:14px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#132943;padding:12px 16px;border-radius:14px;display:none}.toast.show{display:block}
+@media(max-width:520px){.worlds,.levels{grid-template-columns:1fr}.hero h1{font-size:44px}.app{padding:12px}.board{gap:5px}.cell{border-radius:9px}}
+ .level span{display:block;color:#ffe66d;font-size:13px;margin-top:4px}
+
+.world{position:relative;overflow:hidden}.world:after{content:"";position:absolute;inset:auto -20px -35px auto;width:100px;height:100px;border-radius:50%;background:currentColor;opacity:.05;filter:blur(2px)}
+.cell{touch-action:manipulation;-webkit-tap-highlight-color:transparent}.cell.on{animation:glow .18s ease-out}.cell.flash{animation:press .16s ease-out}@keyframes press{50%{transform:scale(.88)}}@keyframes glow{50%{filter:brightness(1.35)}}
+#game .card{position:relative}.game-tools{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:10px}.ghost{background:#10243a;border:1px solid #284660}.world.opened{box-shadow:0 0 0 1px #73d7ff33,0 10px 35px #0004}
+.badge{display:inline-block;padding:5px 9px;border-radius:99px;background:#17314d;color:#a9c7df;font-size:12px;margin:3px}.achievement{padding:13px;border:1px solid #1d3852;border-radius:16px;margin:9px 0;background:#0b192a}.achievement.done{border-color:#3b765f}.shopitem{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px;border:1px solid #1d3852;border-radius:16px;margin:10px 0;background:#0b192a}.shopitem b{display:block}.shopitem small{color:#91a4b8}.pulse{animation:pulse 1.8s infinite}@keyframes pulse{50%{box-shadow:0 0 0 7px #73d7ff10}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top"><div class="logo">💡 LUMEN</div><div class="coins">💎 <span id="coins">10</span></div></div>
+
+  <section id="home" class="screen active">
+    <div class="card" id="quickStart"><h3>⚡ Быстрый старт</h3><p class="small">Нажимай на лампы. Каждое нажатие меняет её и соседние клетки. Включи все лампы.</p></div>
+    <div class="card hero">
+      <h1>💡 LUMEN</h1>
+      <p data-i18n="tag">Включи все огни. Думай на несколько ходов вперёд.</p>
+      <div class="menu">
+        <button class="primary" onclick="play()">▶️ <span data-i18n="play">Играть</span></button>
+        <button onclick="showWorlds()">🌍 <span data-i18n="worlds">Миры</span></button>
+        <button onclick="showDaily()">📅 <span data-i18n="daily">Задание дня</span></button>
+        <button onclick="showAchievements()">🏆 <span data-i18n="achievements">Достижения</span></button>
+        <button onclick="showShop()">🛒 <span data-i18n="shop">Магазин</span></button>
+        <button onclick="showSettings()">⚙️ <span data-i18n="settings">Настройки</span></button>
+      </div>
+      <p class="small" style="margin-top:22px">LUMEN 1.0 • Puzzle game</p>
+    </div>
+  </section>
+
+  <section id="worlds" class="screen">
+    <button class="back" onclick="show('home')">← Назад</button>
+    <div class="card"><h2>🌍 <span data-i18n="worlds">Миры</span></h2><div class="worlds" id="worldList"></div></div>
+  </section>
+
+  <section id="levels" class="screen">
+    <button class="back" onclick="showWorlds()">← <span data-i18n="worlds">Миры</span></button>
+    <div class="card"><h2 id="levelTitle">🌲 Forest</h2><div class="levels" id="levelList"></div></div>
+  </section>
+
+  <section id="game" class="screen">
+    <div class="gamehead">
+      <button onclick="showLevels()">←</button>
+      <div><b id="gameTitle">🌲 Forest</b><div class="small" id="levelLabel">Уровень 1</div></div>
+      <div class="stats"><span class="pill">👣 <span id="moves">0</span></span><span class="pill">⭐ <span id="stars">—</span></span></div>
+    </div>
+    <div class="progress"><div id="progressFill"></div></div>
+    <div class="hint" id="hint"></div>
+    <div id="board" class="board"></div>
+    <div class="game-tools"><button class="ghost" onclick="showLevels()">☰ Уровни</button><button class="ghost" onclick="restart()">↻ Повторить</button><button class="ghost" onclick="togglePause()">⏸ Пауза</button></div><div class="actions">
+      <button onclick="restart()">↻</button>
+      <button onclick="useHint()">💡 <span data-i18n="hint">Подсказка</span></button>
+    </div>
+  </section>
+
+  <section id="shop" class="screen">
+    <button class="back" onclick="show('home')">← Назад</button>
+    <div class="card"><h2>🛒 <span data-i18n="shop">Магазин</span></h2>
+      <button style="width:100%;margin-top:8px" onclick="buyMoves(100)">💎 100 ходов — $0.99</button>
+      <button style="width:100%;margin-top:10px" onclick="buyMoves(500)">💎 500 ходов — $2.99</button>
+      <button style="width:100%;margin-top:10px" onclick="removeAds()">🚫 <span data-i18n="removeAds">Убрать рекламу</span> — $2.99</button>
+      <p class="small">В браузерном MVP покупки демонстрационные. В мобильной версии подключим реальные Google Play / App Store покупки.</p>
+    </div>
+  </section>
+
+  <section id="settings" class="screen">
+    <button class="back" onclick="show('home')">← Назад</button>
+    <div class="card"><h2>⚙️ <span data-i18n="settings">Настройки</span></h2>
+      <h3>🌐 Language</h3>
+      <div class="langrow">
+        <button id="ru" onclick="setLang('ru')">Русский</button>
+        <button id="en" onclick="setLang('en')">English</button>
+        <button id="zh" onclick="setLang('zh')">中文</button>
+      </div>
+      <h3>🔊 Sound</h3><button id="soundBtn" onclick="toggleSound()">🔊 ON</button><h3>📳 Vibration</h3><button id="vibrationBtn" onclick="toggleVibration()">📳 ON</button>
+      <h3>💾 Прогресс</h3>
+      <div class="actions"><button class="ghost" onclick="exportSave()">📤 Сохранить</button><button class="ghost" onclick="document.getElementById('importFile').click()">📥 Загрузить</button></div>
+      <input id="importFile" type="file" accept="application/json" style="display:none" onchange="importSave(event)">
+      <p class="small">Прогресс хранится на этом устройстве. Перед удалением приложения можно сделать резервную копию.</p>
+    </div>
+  </section>
+
+  <section id="daily" class="screen">
+    <button class="back" onclick="show('home')">← Назад</button>
+    <div class="card hero"><h2>📅 Задание дня</h2><p id="dailyDate"></p><div class="stars">⭐⭐⭐</div><p id="dailyStatus">Сегодняшняя головоломка ждёт тебя.</p><button class="primary" id="dailyBtn" onclick="startDaily()">▶️ Играть</button><p class="small">Награда: 💎 5 за прохождение. Серия дней сохраняется.</p></div>
+  </section>
+  <section id="achievements" class="screen">
+    <button class="back" onclick="show('home')">← Назад</button>
+    <div class="card"><h2>🏆 Достижения</h2><div id="achievementList"></div></div>
+  </section>
+
+  <section id="tutorial" class="screen">
+    <div class="card hero"><h2 id="tTitle">Урок 1</h2><p id="tText"></p><div id="tDemo" class="tutorial-demo"></div><button class="primary" id="tBtn" onclick="tutorialAction()">Начать</button></div>
+  </section>
+</div>
+
+<div id="modal" class="modal"><div class="card">
+  <h2 id="modalTitle">Ходы закончились</h2><p id="modalText">Получите дополнительные ходы или купите их.</p>
+  <button class="green" onclick="watchAd()">🎬 Смотреть рекламу → +5 ходов</button>
+  <button onclick="buyMoves(100)">💎 Купить 100 ходов — $0.99</button>
+  <button class="danger" onclick="closeModal()">Продолжить позже</button>
+</div></div>
+<div id="toast" class="toast"></div><div id="pauseModal" class="modal"><div class="card hero"><h2>⏸ Пауза</h2><p>Головоломка сохранена на этом экране.</p><button class="primary" onclick="togglePause()">▶️ Продолжить</button><button onclick="showLevels()">☰ К уровням</button></div></div>
+<div id="winModal" class="modal"><div class="card hero"><div style="font-size:42px">🎉</div><h2 id="winTitle">Уровень пройден!</h2><div class="stars" id="winStars">⭐⭐⭐</div><p id="winText">Отлично! Ты включил все огни.</p><button class="primary" id="winNext" onclick="nextFromWin()">Следующий уровень →</button><button onclick="closeWin()">К уровням</button></div></div>
+
+<script>
+function haptic(ms=18){ try{ if(window.LUMEN_CAN_VIBRATE && !window.LUMEN_CAN_VIBRATE()) return; if(navigator.vibrate) navigator.vibrate(ms); }catch(e){} }
+
+const worlds=[
+{id:0,name:'Forest',ru:'Лес',en:'Forest',zh:'森林',emoji:'🌲'},
+{id:1,name:'Ocean',ru:'Океан',en:'Ocean',zh:'海洋',emoji:'🌊'},
+{id:2,name:'Desert',ru:'Пустыня',en:'Desert',zh:'沙漠',emoji:'🏜️'},
+{id:3,name:'Ice',ru:'Лёд',en:'Ice',zh:'冰雪',emoji:'❄️'},
+{id:4,name:'Space',ru:'Космос',en:'Space',zh:'太空',emoji:'🌌'}
+];
+function seeded(seed){let x=seed>>>0;return()=>{x=(x*1664525+1013904223)>>>0;return x/4294967296}}
+function solutionFor(w,l){const r=seeded(0xA53C9E+w*100003+l*9176),len=Math.min(12,2+Math.floor(l/4)+w*2+Math.floor(l/10)),a=[],u=new Set();while(a.length<len){const n=Math.floor(r()*25);if(!u.has(n)){u.add(n);a.push(n)}}return a}
+
+const tr={
+ ru:{play:'Играть',worlds:'Миры',shop:'Магазин',settings:'Настройки',hint:'Подсказка',removeAds:'Убрать рекламу',daily:'Задание дня',achievements:'Достижения',tag:'Включи все огни. Думай на несколько ходов вперёд.'},
+ en:{play:'Play',worlds:'Worlds',shop:'Shop',settings:'Settings',hint:'Hint',removeAds:'Remove ads',daily:'Daily Challenge',achievements:'Achievements',tag:'Turn on every light. Think a few moves ahead.'},
+ zh:{play:'开始游戏',worlds:'世界',shop:'商店',settings:'设置',hint:'提示',removeAds:'移除广告',daily:'每日挑战',achievements:'成就',tag:'点亮所有灯光。提前思考几步。'}
+};
+let state=JSON.parse(localStorage.getItem('lumen_state_v06')||localStorage.getItem('lumen_state')||'null')||{
+ completed:[],current:1,world:0,coins:10,tutorialDone:false,lang:'ru',adsRemoved:false,sound:true,vibration:true,
+ daily:{lastDate:'',done:false,streak:0,bestStreak:0},achievements:[],stars:{}
+};
+state.stars=state.stars||{}; state.daily=state.daily||{lastDate:'',done:false,streak:0,bestStreak:0}; state.daily.pendingStreak=state.daily.pendingStreak||false;
+let board=[],moves=0,current=state.current||1,currentWorld=state.world||0,tutorialStep=1,mode='level';
+
+function save(){localStorage.setItem('lumen_state',JSON.stringify(state));localStorage.setItem('lumen_state_v06',JSON.stringify(state));}
+function beep(freq=520,dur=.07){if(!state.sound)return;try{const A=window.AudioContext||window.webkitAudioContext;if(!A)return;const a=window.__lumenAudio||(window.__lumenAudio=new A()),o=a.createOscillator(),g=a.createGain();o.frequency.value=freq;o.type='sine';g.gain.value=.035;o.connect(g);g.connect(a.destination);o.start();g.gain.exponentialRampToValueAtTime(.001,a.currentTime+dur);o.stop(a.currentTime+dur)}catch(e){}}
+function togglePause(){const m=document.getElementById('pauseModal');if(m)m.classList.toggle('show');}
+function show(id){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.getElementById('coins').textContent=state.coins;save();}
+function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),1600)}
+function play(){if(!state.tutorialDone){startTutorial();return}showLevels()}
+function startTutorial(){tutorialStep=1;show('tutorial');renderTutorial()}
+function renderTutorial(){
+ const title=document.getElementById('tTitle'),text=document.getElementById('tText'),demo=document.getElementById('tDemo'),btn=document.getElementById('tBtn'); demo.innerHTML='';
+ if(tutorialStep===1){title.textContent='Урок 1 — одна лампа';text.textContent='Нажми на лампу. Это основное действие игры.';const c=document.createElement('button');c.className='cell on';c.style.height='150px';c.onclick=()=>{tutorialStep=2;renderTutorial()};demo.appendChild(c);btn.textContent='Нажми на лампу';return}
+ if(tutorialStep===2){title.textContent='Урок 2 — соседи';text.textContent='Нажатие меняет выбранную клетку и соседей сверху, снизу, слева и справа.';for(let i=0;i<9;i++){const c=document.createElement('button');c.className='cell '+([1,3,4,5,7].includes(i)?'on':'');c.onclick=()=>{if(i===4){tutorialStep=3;renderTutorial()}};demo.appendChild(c)}btn.textContent='Нажми центральную клетку';return}
+ title.textContent='Урок 3 — мини-задача';text.textContent='Выключи все огни. Нажимай клетки 3×3.';
+ for(let i=0;i<9;i++){const c=document.createElement('button');c.className='cell '+([0,2,4,6,8].includes(i)?'on':'');c.onclick=()=>{const r=Math.floor(i/3),col=i%3;[[0,0],[1,0],[-1,0],[0,1],[0,-1]].forEach(([dr,dc])=>{const rr=r+dr,cc=col+dc;if(rr>=0&&rr<3&&cc>=0&&cc<3)demo.children[rr*3+cc].classList.toggle('on')});if([...demo.children].every(x=>!x.classList.contains('on'))){state.tutorialDone=true;state.current=1;save();toast('Обучение завершено!');setTimeout(showLevels,500)}};demo.appendChild(c)}
+ btn.textContent='Решить мини-задачу';
+}
+function tutorialAction(){if(tutorialStep===3)toast('Решай прямо на поле 3×3.')}
+function showWorlds(){show('worlds');renderWorlds()}
+function worldUnlocked(i){return i===0||state.completed.filter(x=>x.world===i-1).length>=25}
+function renderWorlds(){const el=document.getElementById('worldList');el.innerHTML='';worlds.forEach((w,i)=>{const open=worldUnlocked(i),done=state.completed.filter(x=>x.world===i).length,b=document.createElement('button');b.className='world '+(open?'':'locked');b.innerHTML=`${w.emoji} ${w[state.lang]||w.ru}<small>${done}/25 ${open?'':'🔒 Пройди предыдущий мир'}</small>`;b.onclick=()=>{if(open){currentWorld=i;state.world=i;showLevels()}};el.appendChild(b)})}
+function showLevels(){show('levels');renderLevels()}
+function renderLevels(){const w=worlds[currentWorld];document.getElementById('levelTitle').textContent=`${w.emoji} ${w[state.lang]||w.ru}`;const el=document.getElementById('levelList');el.innerHTML='';for(let n=1;n<=25;n++){const done=state.completed.some(x=>x.world===currentWorld&&x.level===n),open=n===1||state.completed.some(x=>x.world===currentWorld&&x.level===n-1),b=document.createElement('button');b.className='level '+(open?'':'locked');const st=state.stars?.[`${currentWorld}-${n}`]||0;b.innerHTML=`${n}<small>${done?'✓ Пройдено':open?'Открыт':'🔒 Заблокирован'}</small><span>${'★'.repeat(st)}${'☆'.repeat(3-st)}</span>`;b.onclick=()=>{if(open)startLevel(n)};el.appendChild(b)}}
+function toggleIndex(i){const r=Math.floor(i/5),c=i%5;[[0,0],[1,0],[-1,0],[0,1],[0,-1]].forEach(([dr,dc])=>{const rr=r+dr,cc=c+dc;if(rr>=0&&rr<5&&cc>=0&&cc<5)board[rr*5+cc]=!board[rr*5+cc]})}
+function makeBoard(sol){board=Array(25).fill(true);sol.forEach(toggleIndex)}
+function optimal(){return solutionFor(currentWorld,current).length}
+function startLevel(n){mode='level';current=n;state.current=n;state.world=currentWorld;moves=0;makeBoard(solutionFor(currentWorld,n));document.getElementById('gameTitle').textContent=worlds[currentWorld].emoji+' '+(worlds[currentWorld][state.lang]||worlds[currentWorld].ru);document.getElementById('levelLabel').textContent='Уровень '+n;document.getElementById('hint').textContent='';show('game');renderBoard()}
+function renderBoard(){const el=document.getElementById('board');el.innerHTML='';board.forEach((on,i)=>{const c=document.createElement('button');c.className='cell '+(on?'on':'');c.onclick=()=>press(i);el.appendChild(c)});document.getElementById('moves').textContent=moves;const lim=optimal()+4;document.getElementById('limitText').textContent='Лимит ходов: '+lim;document.getElementById('moveLimit').textContent=lim;document.getElementById('progressFill').style.width=(board.filter(Boolean).length/25*100)+'%'}
+function press(i){if(document.getElementById('pauseModal').classList.contains('show'))return;toggleIndex(i);moves++;beep(board[i]?680:360);document.getElementById('hint').textContent='';const cell=document.querySelectorAll('#board .cell')[i];if(cell){cell.classList.remove('flash');void cell.offsetWidth;cell.classList.add('flash')}renderBoard();if(board.every(Boolean)){if(mode==='daily')dailyComplete();else completeLevel()}else if(moves>=optimal()+4)showMoveModal()}
+function starsFor(m){const o=optimal();return m<=o?3:m<=o+2?2:1}
+function completeLevel(){beep(880,.16);const already=state.completed.some(x=>x.world===currentWorld&&x.level===current);const st=starsFor(moves);state.stars=state.stars||{};state.stars[`${currentWorld}-${current}`]=Math.max(state.stars[`${currentWorld}-${current}`]||0,st);if(!already){state.completed.push({world:currentWorld,level:current});state.coins+=2}save();updateAchievements();showWin(st)}
+function restart(){moves=0;makeBoard(solutionFor(currentWorld,current));document.getElementById('hint').textContent='';renderBoard()}
+function useHint(){if(state.coins<1){toast('Нужна 1 💎');return}state.coins--;const s=solutionFor(currentWorld,current);document.getElementById('hint').textContent='Попробуй клетку № '+(s[Math.min(moves,s.length-1)]+1);save()}
+function showMoveModal(){document.getElementById('modalTitle').textContent='Ходы заканчиваются';document.getElementById('modalText').textContent='Посмотри наградную рекламу и получи +5 ходов или продолжи позже.';document.getElementById('modal').classList.add('show')}
+function showShop(){show('shop')}
+function toggleVibration(){state.vibration=state.vibration===false; if(window.LUMEN_SAVE_SETTINGS)window.LUMEN_SAVE_SETTINGS({vibration:state.vibration}); save(); const vb=document.getElementById('vibrationBtn');if(vb)vb.textContent=state.vibration?'📳 ON':'📴 OFF'; if(state.vibration)haptic(18)}
+function showSettings(){show('settings');document.querySelectorAll('.langrow button').forEach(b=>b.classList.remove('active'));const x=document.getElementById(state.lang);if(x)x.classList.add('active');const sb=document.getElementById('soundBtn');if(sb)sb.textContent=state.sound?'🔊 ON':'🔇 OFF';const vb=document.getElementById('vibrationBtn');if(vb)vb.textContent=(state.vibration!==false)?'📳 ON':'📴 OFF'}
+function toggleSound(){state.sound=!state.sound; if(window.LUMEN_SAVE_SETTINGS)window.LUMEN_SAVE_SETTINGS({sound:state.sound}); save(); const sb=document.getElementById('soundBtn');if(sb)sb.textContent=state.sound?'🔊 ON':'🔇 OFF'; beep(state.sound?700:260,.05)}
+function setLang(lang){state.lang=lang;save();applyLang();toast('Language: '+lang)}
+function applyLang(){document.querySelectorAll('[data-i18n]').forEach(e=>{const k=e.getAttribute('data-i18n');e.textContent=tr[state.lang][k]||e.textContent})}
+function buyMoves(n){state.coins+=Math.floor(n/50);save();toast('Демо: +'+Math.floor(n/50)+' 💎')}
+function removeAds(){state.adsRemoved=true;save();toast('Демо: реклама отключена')}
+function watchAd(){closeModal();toast('Демо-реклама: +5 ходов');moves=Math.max(0,moves-5);renderBoard()}
+function closeModal(){document.getElementById('modal').classList.remove('show')}
+function dayKey(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function yesterdayKey(){const d=new Date();d.setDate(d.getDate()-1);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function dailyIndex(){let n=0;for(const ch of dayKey().replaceAll('-',''))n=(n*31+ch.charCodeAt(0))%25;return n}
+function ensureDaily(){const t=dayKey(); state.daily.done=(state.daily.lastDate===t);}
+function showDaily(){ensureDaily();show('daily');document.getElementById('dailyDate').textContent='Сегодня: '+dayKey()+' • 🔥 серия: '+state.daily.streak+' • рекорд: '+state.daily.bestStreak;document.getElementById('dailyStatus').textContent=state.daily.done?'✅ Выполнено!':'Сегодняшняя головоломка ждёт тебя.';document.getElementById('dailyBtn').textContent=state.daily.done?'✓ Выполнено':'▶️ Играть'}
+function showWin(stars){document.getElementById('winTitle').textContent='🎉 Уровень пройден!';document.getElementById('winStars').textContent='★'.repeat(stars)+'☆'.repeat(3-stars);document.getElementById('winText').textContent='Отлично! Все огни включены.';const b=document.getElementById('winNext');b.textContent=current<25?'Следующий уровень →':'К уровням';b.onclick=nextFromWin;document.getElementById('winModal').classList.add('show')}
+function nextFromWin(){closeWin();if(current<25)startLevel(current+1);else showLevels()}
+function closeWin(){document.getElementById('winModal').classList.remove('show')}
+const ACH=[
+{id:'first',name:'Первый свет',desc:'Пройди 1 уровень',reward:3,ok:()=>state.completed.length>=1},
+{id:'ten',name:'Десятка',desc:'Пройди 10 уровней',reward:5,ok:()=>state.completed.length>=10},
+{id:'forest',name:'Лес пройден',desc:'Пройди все 25 уровней Forest',reward:10,ok:()=>state.completed.filter(x=>x.world===0).length>=25},
+{id:'daily',name:'Ежедневный игрок',desc:'Выполни Daily Challenge',reward:5,ok:()=>state.daily.done},
+{id:'streak',name:'Неделя',desc:'Достигни серии 7 дней',reward:10,ok:()=>state.daily.bestStreak>=7},
+{id:'all',name:'Пять миров',desc:'Пройди по одному уровню в каждом мире',reward:15,ok:()=>worlds.every((_,i)=>state.completed.some(x=>x.world===i))}
+];
+function updateAchievements(){for(const a of ACH){if(a.ok()&&!state.achievements.includes(a.id)){state.achievements.push(a.id);state.coins+=a.reward;toast('🏆 '+a.name+' +'+a.reward+' 💎')}}save()}
+function showAchievements(){show('achievements');const el=document.getElementById('achievementList');el.innerHTML='';for(const a of ACH){const done=state.achievements.includes(a.id),d=document.createElement('div');d.className='achievement '+(done?'done':'');d.innerHTML=`<b>${done?'🏆':'🔒'} ${a.name}</b><span style="float:right">${done?'✓':'+'+a.reward+' 💎'}</span><div class="small">${a.desc}</div>`;el.appendChild(d)}}
+function startDaily(){ensureDaily();if(state.daily.done)return;mode='daily';const idx=dailyIndex();currentWorld=0;current=idx+1;moves=0;makeBoard(solutionFor(0,current));show('game');document.getElementById('gameTitle').textContent='📅 Daily Challenge';document.getElementById('levelLabel').textContent='Сегодняшняя задача';document.getElementById('hint').textContent='';renderBoard()}
+function dailyComplete(){const t=dayKey();if(state.daily.lastDate===t)return;const previous=state.daily.lastDate;state.daily.done=true;state.daily.streak=previous===yesterdayKey()?state.daily.streak+1:1;state.daily.bestStreak=Math.max(state.daily.bestStreak,state.daily.streak);state.daily.lastDate=t;state.coins+=5;beep(980,.18);save();updateAchievements();toast('📅 Daily Challenge! +5 💎');setTimeout(showDaily,800)}
+
+function exportSave(){const payload={app:'LUMEN',version:'1.2',savedAt:new Date().toISOString(),state};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='lumen-save.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast('💾 Резервная копия сохранена')}
+function importSave(e){const file=e.target.files&&e.target.files[0];if(!file)return;const r=new FileReader();r.onload=()=>{try{const x=JSON.parse(r.result);if(!x.state||x.app!=='LUMEN')throw new Error('bad');const base={completed:[],current:1,world:0,coins:10,tutorialDone:false,lang:'ru',adsRemoved:false,sound:true,vibration:true,daily:{lastDate:'',done:false,streak:0,bestStreak:0},achievements:[],stars:{}};state=Object.assign(base,x.state);state.daily=Object.assign(base.daily,state.daily||{});state.stars=state.stars||{};save();applyLang();document.getElementById('coins').textContent=state.coins;toast('📥 Прогресс загружен');setTimeout(()=>location.reload(),500)}catch(_){toast('Не удалось загрузить файл')}};r.readAsText(file);e.target.value=''}
+
+/* LUMEN 1.4 — user sound/vibration preferences */
+(function(){
+  const KEY = "lumen_user_settings_v1";
+  const defaults = { sound: true, vibration: true };
+  function loadSettings(){
+    try { return Object.assign({}, defaults, JSON.parse(localStorage.getItem(KEY) || "{}")); }
+    catch(e){ return Object.assign({}, defaults); }
+  }
+  window.LUMEN_SETTINGS = loadSettings();
+  window.LUMEN_SAVE_SETTINGS = function(patch){
+    window.LUMEN_SETTINGS = Object.assign({}, window.LUMEN_SETTINGS, patch || {});
+    localStorage.setItem(KEY, JSON.stringify(window.LUMEN_SETTINGS));
+    if (window.state) {
+      if (typeof window.LUMEN_SETTINGS.sound === "boolean") window.state.sound = window.LUMEN_SETTINGS.sound;
+      if (typeof window.LUMEN_SETTINGS.vibration === "boolean") window.state.vibration = window.LUMEN_SETTINGS.vibration;
+      try { if (typeof window.save === "function") window.save(); } catch(e) {}
+    }
+    document.documentElement.dataset.sound = window.LUMEN_SETTINGS.sound ? "on" : "off";
+    document.documentElement.dataset.vibration = window.LUMEN_SETTINGS.vibration ? "on" : "off";
+  };
+  window.LUMEN_CAN_SOUND = function(){ return !!window.LUMEN_SETTINGS.sound; };
+  window.LUMEN_CAN_VIBRATE = function(){ return !!window.LUMEN_SETTINGS.vibration && !!navigator.vibrate; };
+  window.LUMEN_VIBRATE = function(pattern){
+    if (window.LUMEN_CAN_VIBRATE()) { try { navigator.vibrate(pattern || 20); } catch(e){} }
+  };
+  window.LUMEN_SAVE_SETTINGS();
+})();
+
+</script>
+<script>if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));</script>
+
+<div id="lumen-settings-panel" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.78);align-items:center;justify-content:center;padding:20px">
+  <div style="max-width:420px;width:100%;border-radius:24px;padding:24px;background:#151a25;color:#fff;box-shadow:0 20px 60px rgba(0,0,0,.45)">
+    <div style="font-size:24px;font-weight:800;margin-bottom:18px">⚙️ <span data-lumen-settings-title>Settings</span></div>
+    <label style="display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:17px">
+      <span>🔊 <span data-lumen-sound-label>Sound</span></span>
+      <input id="lumen-sound-toggle" type="checkbox" style="width:22px;height:22px">
+    </label>
+    <label style="display:flex;align-items:center;justify-content:space-between;padding:16px 0;font-size:17px">
+      <span>📳 <span data-lumen-vibration-label>Vibration</span></span>
+      <input id="lumen-vibration-toggle" type="checkbox" style="width:22px;height:22px">
+    </label>
+    <button id="lumen-settings-close" style="margin-top:20px;width:100%;padding:14px;border:0;border-radius:14px;font-size:17px;font-weight:700;cursor:pointer">OK</button>
+  </div>
+</div>
+<script>
+(function(){
+  const panel=document.getElementById("lumen-settings-panel");
+  const sound=document.getElementById("lumen-sound-toggle");
+  const vib=document.getElementById("lumen-vibration-toggle");
+  function sync(){
+    if(!window.LUMEN_SETTINGS) return;
+    sound.checked=(window.state && typeof window.state.sound==="boolean") ? window.state.sound : !!window.LUMEN_SETTINGS.sound;
+    vib.checked=(window.state && typeof window.state.vibration==="boolean") ? window.state.vibration : !!window.LUMEN_SETTINGS.vibration;
+  }
+  function open(){sync();panel.style.display="flex";}
+  function close(){panel.style.display="none";}
+  sound.addEventListener("change",()=>window.LUMEN_SAVE_SETTINGS({sound:sound.checked}));
+  vib.addEventListener("change",()=>window.LUMEN_SAVE_SETTINGS({vibration:vib.checked}));
+  document.getElementById("lumen-settings-close").addEventListener("click",close);
+  document.addEventListener("click",function(e){
+    const t=e.target.closest && e.target.closest("[data-open-settings]");
+    if(t){e.preventDefault();open();}
+  });
+  window.LUMEN_OPEN_SETTINGS=open;
+})();
+</script>
+
+</body></html>
