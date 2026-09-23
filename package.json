@@ -1,6 +1,6 @@
 {
   "name": "lumen-puzzle",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "private": true,
   "description": "LUMEN light puzzle mobile game",
   "scripts": {
@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@capacitor/core": "^7.0.0",
-    "@capacitor/android": "^7.0.0"
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/app": "^7.0.0"
   },
   "devDependencies": {
     "@capacitor/cli": "^7.0.0"

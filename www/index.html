@@ -17,16 +17,33 @@ button:hover{filter:brightness(1.12)}.app{max-width:760px;margin:auto;padding:18
 .cell{touch-action:manipulation;-webkit-tap-highlight-color:transparent}.cell.on{animation:glow .18s ease-out}.cell.flash{animation:press .16s ease-out}@keyframes press{50%{transform:scale(.88)}}@keyframes glow{50%{filter:brightness(1.35)}}
 #game .card{position:relative}.game-tools{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:10px}.ghost{background:#10243a;border:1px solid #284660}.world.opened{box-shadow:0 0 0 1px #73d7ff33,0 10px 35px #0004}
 .badge{display:inline-block;padding:5px 9px;border-radius:99px;background:#17314d;color:#a9c7df;font-size:12px;margin:3px}.achievement{padding:13px;border:1px solid #1d3852;border-radius:16px;margin:9px 0;background:#0b192a}.achievement.done{border-color:#3b765f}.shopitem{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px;border:1px solid #1d3852;border-radius:16px;margin:10px 0;background:#0b192a}.shopitem b{display:block}.shopitem small{color:#91a4b8}.pulse{animation:pulse 1.8s infinite}@keyframes pulse{50%{box-shadow:0 0 0 7px #73d7ff10}}
+
+/* LUMEN 1.7 polish */
+body{background:radial-gradient(circle at 50% 12%,#123d70 0,#081b34 35%,#030b17 78%)}
+.app{max-width:760px}.top{transition:opacity .25s}.screen{opacity:0;transform:translateY(8px)}.screen.active{display:block;animation:screenIn .26s ease forwards}@keyframes screenIn{to{opacity:1;transform:none}}
+.back{display:none!important}
+#home .hero{background:linear-gradient(180deg,rgba(7,27,52,.86),rgba(5,18,36,.94));border-color:#245384;padding:24px 18px 28px;overflow:hidden;position:relative}
+#home .hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 18%,#2b8cff25,transparent 30%),linear-gradient(180deg,transparent 55%,#02091488);pointer-events:none}
+.home-bulb,.bulb{position:relative;display:inline-block;width:92px;height:92px;border-radius:50% 50% 46% 46%;background:radial-gradient(circle at 38% 30%,#fffbd0 0 8%,#ffe66d 28%,#f7b928 62%,#bd6f08 100%);box-shadow:0 0 18px #ffe66d,0 0 48px #ffc62999,0 0 90px #ffb00055;margin:0 auto 12px}
+.home-bulb:before,.bulb:before{content:"";position:absolute;width:36%;height:25%;left:32%;bottom:-15%;border-radius:4px;background:repeating-linear-gradient(0deg,#9eacb7 0 5px,#55616d 5px 9px);box-shadow:0 3px 8px #0008}
+.home-bulb:after,.bulb:after{content:"〽";position:absolute;inset:23% 0 auto;text-align:center;color:#fff8b8;font-size:34px;font-weight:900;text-shadow:0 0 8px #fff}
+.hero h1{font-size:48px;letter-spacing:9px;text-shadow:0 0 18px #5faeff88;margin-top:8px}.hero p{font-size:17px}
+#home .menu{grid-template-columns:1fr 1fr;gap:12px;position:relative}#home .menu button{min-height:78px;text-align:left;padding:15px 18px;background:linear-gradient(145deg,#10335a,#092341);border:1px solid #245384;box-shadow:inset 0 1px #ffffff0c,0 8px 20px #0004}#home .menu .primary{grid-column:1/-1;min-height:72px;text-align:center;background:linear-gradient(135deg,#22b9f4,#1264e8);box-shadow:0 0 24px #1b9cff55;font-size:22px}#home .menu button:last-child{grid-column:1/-1;text-align:center}
+@media(max-width:520px){#home .menu{grid-template-columns:1fr 1fr}#home .menu button{font-size:16px;padding:13px 10px}.hero h1{font-size:40px}.home-bulb{width:78px;height:78px}}
+.board{gap:8px}.cell{position:relative;background:transparent!important;border:0!important;box-shadow:none!important;overflow:visible}.cell:before{content:"";position:absolute;width:58%;height:58%;left:21%;top:12%;border-radius:50% 50% 46% 46%;background:radial-gradient(circle at 38% 30%,#32455c,#14243a 62%,#091321);border:1px solid #34506d;box-shadow:inset 0 0 12px #0008;transition:.16s}.cell:after{content:"";position:absolute;width:28%;height:20%;left:36%;top:66%;border-radius:3px;background:repeating-linear-gradient(0deg,#71808d 0 3px,#344352 3px 6px);transition:.16s}.cell.on:before{background:radial-gradient(circle at 38% 28%,#fffde2 0 8%,#ffe66d 28%,#f6bd2d 65%,#b96b08);border-color:#ffe88c;box-shadow:0 0 13px #ffe66d,0 0 27px #ffc72d99,inset 0 0 8px #fff8}.cell.on:after{background:repeating-linear-gradient(0deg,#c8d0d6 0 3px,#68737e 3px 6px);box-shadow:0 0 8px #ffe66d66}.cell.hint-pulse:before{animation:hintPulse .7s ease 3}@keyframes hintPulse{50%{transform:scale(1.16);box-shadow:0 0 18px #fff,0 0 42px #ffd52a}}
+.tutorial-demo{width:min(68vw,230px);grid-template-columns:repeat(3,1fr);gap:5px}.tutorial-demo .cell{height:auto!important;aspect-ratio:1}.tutorial-demo.single{display:block;width:120px}.tutorial-demo.single .cell{width:120px;height:120px!important}.tutorial-demo+.primary.hidden{display:none}
+#splash{position:fixed;z-index:10000;inset:0;background:radial-gradient(circle at 50% 42%,#124a87,#061a33 42%,#020914 80%);display:flex;align-items:center;justify-content:center;transition:opacity .45s ease,visibility .45s}.splash-inner{text-align:center}.splash-bulb{width:118px;height:118px;animation:splashGlow 1.8s ease-in-out}.splash-title{font-size:46px;font-weight:800;letter-spacing:12px;margin-top:28px;text-shadow:0 0 20px #7cbaff}@keyframes splashGlow{0%{filter:brightness(.75);transform:scale(.94)}70%,100%{filter:brightness(1.1);transform:scale(1)}}#splash.hide{opacity:0;visibility:hidden}
+
 </style>
 </head>
 <body>
+<div id="splash"><div class="splash-inner"><div class="bulb splash-bulb"></div><div class="splash-title">LUMEN</div></div></div>
 <div class="app">
   <div class="top"><div class="logo">💡 LUMEN</div><div class="coins">💎 <span id="coins">10</span></div></div>
 
   <section id="home" class="screen active">
-    <div class="card" id="quickStart"><h3>⚡ Быстрый старт</h3><p class="small">Нажимай на лампы. Каждое нажатие меняет её и соседние клетки. Включи все лампы.</p></div>
     <div class="card hero">
-      <h1>💡 LUMEN</h1>
+      <div class="home-bulb" aria-hidden="true"></div><h1>LUMEN</h1>
       <p data-i18n="tag">Включи все огни. Думай на несколько ходов вперёд.</p>
       <div class="menu">
         <button class="primary" onclick="play()">▶️ <span data-i18n="play">Играть</span></button>
@@ -36,7 +53,7 @@ button:hover{filter:brightness(1.12)}.app{max-width:760px;margin:auto;padding:18
         <button onclick="showShop()">🛒 <span data-i18n="shop">Магазин</span></button>
         <button onclick="showSettings()">⚙️ <span data-i18n="settings">Настройки</span></button>
       </div>
-      <p class="small" style="margin-top:22px">LUMEN 1.0 • Puzzle game</p>
+      <p class="small" style="margin-top:22px">LUMEN 1.7</p>
     </div>
   </section>
 
@@ -52,7 +69,7 @@ button:hover{filter:brightness(1.12)}.app{max-width:760px;margin:auto;padding:18
 
   <section id="game" class="screen">
     <div class="gamehead">
-      <button onclick="showLevels()">←</button>
+      <div style="width:48px" aria-hidden="true"></div>
       <div><b id="gameTitle">🌲 Forest</b><div class="small" id="levelLabel">Уровень 1</div></div>
       <div class="stats"><span class="pill">👣 <span id="moves">0</span></span><span class="pill">⭐ <span id="stars">—</span></span></div>
     </div>
@@ -78,17 +95,15 @@ button:hover{filter:brightness(1.12)}.app{max-width:760px;margin:auto;padding:18
   <section id="settings" class="screen">
     <button class="back" onclick="show('home')">← Назад</button>
     <div class="card"><h2>⚙️ <span data-i18n="settings">Настройки</span></h2>
-      <h3>🌐 Language</h3>
+      <h3>🌐 <span data-i18n="language">Язык</span></h3>
       <div class="langrow">
         <button id="ru" onclick="setLang('ru')">Русский</button>
         <button id="en" onclick="setLang('en')">English</button>
         <button id="zh" onclick="setLang('zh')">中文</button>
       </div>
-      <h3>🔊 Sound</h3><button id="soundBtn" onclick="toggleSound()">🔊 ON</button><h3>📳 Vibration</h3><button id="vibrationBtn" onclick="toggleVibration()">📳 ON</button>
-      <h3>💾 Прогресс</h3>
-      <div class="actions"><button class="ghost" onclick="exportSave()">📤 Сохранить</button><button class="ghost" onclick="document.getElementById('importFile').click()">📥 Загрузить</button></div>
-      <input id="importFile" type="file" accept="application/json" style="display:none" onchange="importSave(event)">
-      <p class="small">Прогресс хранится на этом устройстве. Перед удалением приложения можно сделать резервную копию.</p>
+      <h3>🔊 <span data-i18n="sound">Звук</span></h3><button id="soundBtn" onclick="toggleSound()">🔊 Вкл.</button>
+      <h3>📳 <span data-i18n="vibration">Вибрация</span></h3><button id="vibrationBtn" onclick="toggleVibration()">📳 Вкл.</button>
+      <p class="small" data-i18n="autosave">Прогресс сохраняется автоматически.</p>
     </div>
   </section>
 
@@ -115,6 +130,7 @@ button:hover{filter:brightness(1.12)}.app{max-width:760px;margin:auto;padding:18
 <div id="toast" class="toast"></div><div id="pauseModal" class="modal"><div class="card hero"><h2>⏸ Пауза</h2><p>Головоломка сохранена на этом экране.</p><button class="primary" onclick="togglePause()">▶️ Продолжить</button><button onclick="showLevels()">☰ К уровням</button></div></div>
 <div id="winModal" class="modal"><div class="card hero"><div style="font-size:42px">🎉</div><h2 id="winTitle">Уровень пройден!</h2><div class="stars" id="winStars">⭐⭐⭐</div><p id="winText">Отлично! Ты включил все огни.</p><button class="primary" id="winNext" onclick="nextFromWin()">Следующий уровень →</button><button onclick="closeWin()">К уровням</button></div></div>
 
+<audio id="switchSound" preload="auto" src="switch-soft.wav"></audio>
 <script>
 function haptic(ms=18){ try{ if(window.LUMEN_CAN_VIBRATE && !window.LUMEN_CAN_VIBRATE()) return; if(navigator.vibrate) navigator.vibrate(ms); }catch(e){} }
 
@@ -129,9 +145,9 @@ function seeded(seed){let x=seed>>>0;return()=>{x=(x*1664525+1013904223)>>>0;ret
 function solutionFor(w,l){const r=seeded(0xA53C9E+w*100003+l*9176),len=Math.min(12,2+Math.floor(l/4)+w*2+Math.floor(l/10)),a=[],u=new Set();while(a.length<len){const n=Math.floor(r()*25);if(!u.has(n)){u.add(n);a.push(n)}}return a}
 
 const tr={
- ru:{play:'Играть',worlds:'Миры',shop:'Магазин',settings:'Настройки',hint:'Подсказка',removeAds:'Убрать рекламу',daily:'Задание дня',achievements:'Достижения',tag:'Включи все огни. Думай на несколько ходов вперёд.'},
- en:{play:'Play',worlds:'Worlds',shop:'Shop',settings:'Settings',hint:'Hint',removeAds:'Remove ads',daily:'Daily Challenge',achievements:'Achievements',tag:'Turn on every light. Think a few moves ahead.'},
- zh:{play:'开始游戏',worlds:'世界',shop:'商店',settings:'设置',hint:'提示',removeAds:'移除广告',daily:'每日挑战',achievements:'成就',tag:'点亮所有灯光。提前思考几步。'}
+ ru:{play:'Играть',worlds:'Миры',shop:'Магазин',settings:'Настройки',hint:'Подсказка',removeAds:'Убрать рекламу',daily:'Задание дня',achievements:'Достижения',tag:'Включи все огни. Думай на несколько ходов вперёд.',language:'Язык',sound:'Звук',vibration:'Вибрация',on:'Вкл.',off:'Выкл.',autosave:'Прогресс сохраняется автоматически.'},
+ en:{play:'Play',worlds:'Worlds',shop:'Shop',settings:'Settings',hint:'Hint',removeAds:'Remove ads',daily:'Daily Challenge',achievements:'Achievements',tag:'Turn on every light. Think a few moves ahead.',language:'Language',sound:'Sound',vibration:'Vibration',on:'On',off:'Off',autosave:'Progress is saved automatically.'},
+ zh:{play:'开始游戏',worlds:'世界',shop:'商店',settings:'设置',hint:'提示',removeAds:'移除广告',daily:'每日挑战',achievements:'成就',tag:'点亮所有灯光。提前思考几步。',language:'语言',sound:'声音',vibration:'振动',on:'开',off:'关',autosave:'游戏进度会自动保存。'}
 };
 let state=JSON.parse(localStorage.getItem('lumen_state_v06')||localStorage.getItem('lumen_state')||'null')||{
  completed:[],current:1,world:0,coins:10,tutorialDone:false,lang:'ru',adsRemoved:false,sound:true,vibration:true,
@@ -141,19 +157,25 @@ state.stars=state.stars||{}; state.daily=state.daily||{lastDate:'',done:false,st
 let board=[],moves=0,current=state.current||1,currentWorld=state.world||0,tutorialStep=1,mode='level';
 
 function save(){localStorage.setItem('lumen_state',JSON.stringify(state));localStorage.setItem('lumen_state_v06',JSON.stringify(state));}
-function beep(freq=520,dur=.07){if(!state.sound)return;try{const A=window.AudioContext||window.webkitAudioContext;if(!A)return;const a=window.__lumenAudio||(window.__lumenAudio=new A()),o=a.createOscillator(),g=a.createGain();o.frequency.value=freq;o.type='sine';g.gain.value=.035;o.connect(g);g.connect(a.destination);o.start();g.gain.exponentialRampToValueAtTime(.001,a.currentTime+dur);o.stop(a.currentTime+dur)}catch(e){}}
+function beep(freq=520,dur=.07){if(!state.sound)return;try{const A=window.AudioContext||window.webkitAudioContext;if(!A)return;const a=window.__lumenAudio||(window.__lumenAudio=new A()),o=a.createOscillator(),g=a.createGain();o.frequency.value=freq;o.type='sine';g.gain.value=.018;o.connect(g);g.connect(a.destination);o.start();g.gain.exponentialRampToValueAtTime(.001,a.currentTime+dur);o.stop(a.currentTime+dur)}catch(e){}}
+function switchClick(){if(!state.sound)return;try{const a=document.getElementById('switchSound');a.currentTime=0;a.volume=.48;a.play().catch(()=>{})}catch(e){}}
 function togglePause(){const m=document.getElementById('pauseModal');if(m)m.classList.toggle('show');}
-function show(id){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.getElementById('coins').textContent=state.coins;save();}
+let currentScreen='home',navStack=[];
+function show(id,fromBack=false){if(id===currentScreen)return;if(!fromBack&&currentScreen&&currentScreen!==id)navStack.push(currentScreen);document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');currentScreen=id;document.getElementById('coins').textContent=state.coins;save();}
+function goBack(){if(document.querySelector('.modal.show')){document.querySelectorAll('.modal.show').forEach(x=>x.classList.remove('show'));return}if(currentScreen==='home')return;const prev=navStack.pop()||'home';show(prev,true);if(prev==='levels')renderLevels();if(prev==='worlds')renderWorlds();}
+window.addEventListener('popstate',e=>{goBack();history.pushState({lumen:true},'')});history.replaceState({lumen:true},'');history.pushState({lumen:true},'');
+setTimeout(()=>document.getElementById('splash')?.classList.add('hide'),2000);
+try{window.Capacitor?.Plugins?.App?.addListener('backButton',()=>{if(currentScreen==='home'){window.Capacitor.Plugins.App.exitApp()}else goBack()})}catch(e){}
 function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),1600)}
 function play(){if(!state.tutorialDone){startTutorial();return}showLevels()}
 function startTutorial(){tutorialStep=1;show('tutorial');renderTutorial()}
 function renderTutorial(){
- const title=document.getElementById('tTitle'),text=document.getElementById('tText'),demo=document.getElementById('tDemo'),btn=document.getElementById('tBtn'); demo.innerHTML='';
- if(tutorialStep===1){title.textContent='Урок 1 — одна лампа';text.textContent='Нажми на лампу. Это основное действие игры.';const c=document.createElement('button');c.className='cell on';c.style.height='150px';c.onclick=()=>{tutorialStep=2;renderTutorial()};demo.appendChild(c);btn.textContent='Нажми на лампу';return}
- if(tutorialStep===2){title.textContent='Урок 2 — соседи';text.textContent='Нажатие меняет выбранную клетку и соседей сверху, снизу, слева и справа.';for(let i=0;i<9;i++){const c=document.createElement('button');c.className='cell '+([1,3,4,5,7].includes(i)?'on':'');c.onclick=()=>{if(i===4){tutorialStep=3;renderTutorial()}};demo.appendChild(c)}btn.textContent='Нажми центральную клетку';return}
- title.textContent='Урок 3 — мини-задача';text.textContent='Выключи все огни. Нажимай клетки 3×3.';
- for(let i=0;i<9;i++){const c=document.createElement('button');c.className='cell '+([0,2,4,6,8].includes(i)?'on':'');c.onclick=()=>{const r=Math.floor(i/3),col=i%3;[[0,0],[1,0],[-1,0],[0,1],[0,-1]].forEach(([dr,dc])=>{const rr=r+dr,cc=col+dc;if(rr>=0&&rr<3&&cc>=0&&cc<3)demo.children[rr*3+cc].classList.toggle('on')});if([...demo.children].every(x=>!x.classList.contains('on'))){state.tutorialDone=true;state.current=1;save();toast('Обучение завершено!');setTimeout(showLevels,500)}};demo.appendChild(c)}
- btn.textContent='Решить мини-задачу';
+ const title=document.getElementById('tTitle'),text=document.getElementById('tText'),demo=document.getElementById('tDemo'),btn=document.getElementById('tBtn'); demo.innerHTML='';demo.classList.remove('single');btn.classList.add('hidden');
+ if(tutorialStep===1){title.textContent='Урок 1 — одна лампа';text.textContent='Нажми на лампу. Это основное действие игры.';demo.classList.add('single');const c=document.createElement('button');c.className='cell on';c.onclick=()=>{switchClick();tutorialStep=2;renderTutorial()};demo.appendChild(c);return}
+ if(tutorialStep===2){title.textContent='Урок 2 — три лампы';text.textContent='Каждое нажатие меняет ровно 3 лампы. В центре — выбранную, левую и правую.';for(let i=0;i<9;i++){const c=document.createElement('button');c.className='cell '+([3,4,5].includes(i)?'on':'');c.onclick=()=>{if(i===4){switchClick();tutorialStep=3;renderTutorial()}};demo.appendChild(c)}return}
+ title.textContent='Урок 3 — мини-задача';text.textContent='Попробуй решить поле 3×3. Помни: одно нажатие всегда меняет 3 лампы.';
+ for(let i=0;i<9;i++){const c=document.createElement('button');c.className='cell '+([0,2,4,6,8].includes(i)?'on':'');c.onclick=()=>{threeLampIndexes(i,3).forEach(idx=>demo.children[idx].classList.toggle('on'));switchClick();if([...demo.children].every(x=>!x.classList.contains('on'))){state.tutorialDone=true;state.current=1;save();toast('Обучение завершено!');setTimeout(showLevels,500)}};demo.appendChild(c)}
+ btn.classList.add('hidden');
 }
 function tutorialAction(){if(tutorialStep===3)toast('Решай прямо на поле 3×3.')}
 function showWorlds(){show('worlds');renderWorlds()}
@@ -161,22 +183,31 @@ function worldUnlocked(i){return i===0||state.completed.filter(x=>x.world===i-1)
 function renderWorlds(){const el=document.getElementById('worldList');el.innerHTML='';worlds.forEach((w,i)=>{const open=worldUnlocked(i),done=state.completed.filter(x=>x.world===i).length,b=document.createElement('button');b.className='world '+(open?'':'locked');b.innerHTML=`${w.emoji} ${w[state.lang]||w.ru}<small>${done}/25 ${open?'':'🔒 Пройди предыдущий мир'}</small>`;b.onclick=()=>{if(open){currentWorld=i;state.world=i;showLevels()}};el.appendChild(b)})}
 function showLevels(){show('levels');renderLevels()}
 function renderLevels(){const w=worlds[currentWorld];document.getElementById('levelTitle').textContent=`${w.emoji} ${w[state.lang]||w.ru}`;const el=document.getElementById('levelList');el.innerHTML='';for(let n=1;n<=25;n++){const done=state.completed.some(x=>x.world===currentWorld&&x.level===n),open=n===1||state.completed.some(x=>x.world===currentWorld&&x.level===n-1),b=document.createElement('button');b.className='level '+(open?'':'locked');const st=state.stars?.[`${currentWorld}-${n}`]||0;b.innerHTML=`${n}<small>${done?'✓ Пройдено':open?'Открыт':'🔒 Заблокирован'}</small><span>${'★'.repeat(st)}${'☆'.repeat(3-st)}</span>`;b.onclick=()=>{if(open)startLevel(n)};el.appendChild(b)}}
-function toggleIndex(i){const r=Math.floor(i/5),c=i%5;[[0,0],[1,0],[-1,0],[0,1],[0,-1]].forEach(([dr,dc])=>{const rr=r+dr,cc=c+dc;if(rr>=0&&rr<5&&cc>=0&&cc<5)board[rr*5+cc]=!board[rr*5+cc]})}
+function threeLampIndexes(i,size=5){
+ const r=Math.floor(i/size),c=i%size;
+ // LUMEN 1.7.2: every tap changes exactly three visible, adjacent lamps.
+ // Middle columns: left + pressed + right. Edge columns: pressed + inward + vertical neighbour.
+ if(c>0&&c<size-1)return [i,i-1,i+1];
+ const inward=c===0?i+1:i-1;
+ const vertical=r<size-1?i+size:i-size;
+ return [i,inward,vertical];
+}
+function toggleIndex(i){threeLampIndexes(i,5).forEach(idx=>board[idx]=!board[idx])}
 function makeBoard(sol){board=Array(25).fill(true);sol.forEach(toggleIndex)}
 function optimal(){return solutionFor(currentWorld,current).length}
 function startLevel(n){mode='level';current=n;state.current=n;state.world=currentWorld;moves=0;makeBoard(solutionFor(currentWorld,n));document.getElementById('gameTitle').textContent=worlds[currentWorld].emoji+' '+(worlds[currentWorld][state.lang]||worlds[currentWorld].ru);document.getElementById('levelLabel').textContent='Уровень '+n;document.getElementById('hint').textContent='';show('game');renderBoard()}
-function renderBoard(){const el=document.getElementById('board');el.innerHTML='';board.forEach((on,i)=>{const c=document.createElement('button');c.className='cell '+(on?'on':'');c.onclick=()=>press(i);el.appendChild(c)});document.getElementById('moves').textContent=moves;const lim=optimal()+4;document.getElementById('limitText').textContent='Лимит ходов: '+lim;document.getElementById('moveLimit').textContent=lim;document.getElementById('progressFill').style.width=(board.filter(Boolean).length/25*100)+'%'}
-function press(i){if(document.getElementById('pauseModal').classList.contains('show'))return;toggleIndex(i);moves++;beep(board[i]?680:360);document.getElementById('hint').textContent='';const cell=document.querySelectorAll('#board .cell')[i];if(cell){cell.classList.remove('flash');void cell.offsetWidth;cell.classList.add('flash')}renderBoard();if(board.every(Boolean)){if(mode==='daily')dailyComplete();else completeLevel()}else if(moves>=optimal()+4)showMoveModal()}
+function renderBoard(){const el=document.getElementById('board');el.innerHTML='';board.forEach((on,i)=>{const c=document.createElement('button');c.className='cell '+(on?'on':'');c.setAttribute('aria-label',on?'Лампа включена':'Лампа выключена');c.onclick=()=>press(i);el.appendChild(c)});document.getElementById('moves').textContent=moves;const lim=optimal()+4;document.getElementById('limitText').textContent='Лимит ходов: '+lim;document.getElementById('moveLimit').textContent=lim;document.getElementById('progressFill').style.width=(board.filter(Boolean).length/25*100)+'%'}
+function press(i){if(document.getElementById('pauseModal').classList.contains('show'))return;toggleIndex(i);moves++;switchClick();haptic(10);document.getElementById('hint').textContent='';const cell=document.querySelectorAll('#board .cell')[i];if(cell){cell.classList.remove('flash');void cell.offsetWidth;cell.classList.add('flash')}renderBoard();if(board.every(Boolean)){if(mode==='daily')dailyComplete();else completeLevel()}else if(moves>=optimal()+4)showMoveModal()}
 function starsFor(m){const o=optimal();return m<=o?3:m<=o+2?2:1}
-function completeLevel(){beep(880,.16);const already=state.completed.some(x=>x.world===currentWorld&&x.level===current);const st=starsFor(moves);state.stars=state.stars||{};state.stars[`${currentWorld}-${current}`]=Math.max(state.stars[`${currentWorld}-${current}`]||0,st);if(!already){state.completed.push({world:currentWorld,level:current});state.coins+=2}save();updateAchievements();showWin(st)}
+function completeLevel(){beep(880,.16);const already=state.completed.some(x=>x.world===currentWorld&&x.level===current);const st=starsFor(moves);state.stars=state.stars||{};state.stars[`${currentWorld}-${current}`]=Math.max(state.stars[`${currentWorld}-${current}`]||0,st);if(!already){state.completed.push({world:currentWorld,level:current});state.coins+=2}state.current=Math.min(25,current+1);save();updateAchievements();showWin(st)}
 function restart(){moves=0;makeBoard(solutionFor(currentWorld,current));document.getElementById('hint').textContent='';renderBoard()}
-function useHint(){if(state.coins<1){toast('Нужна 1 💎');return}state.coins--;const s=solutionFor(currentWorld,current);document.getElementById('hint').textContent='Попробуй клетку № '+(s[Math.min(moves,s.length-1)]+1);save()}
+function useHint(){if(state.coins<1){toast('Нужна 1 💎');return}state.coins--;const sol=solutionFor(currentWorld,current),idx=sol[Math.min(moves,sol.length-1)];document.getElementById('hint').textContent='';const cells=document.querySelectorAll('#board .cell');if(cells[idx]){cells[idx].classList.remove('hint-pulse');void cells[idx].offsetWidth;cells[idx].classList.add('hint-pulse')}save()}
 function showMoveModal(){document.getElementById('modalTitle').textContent='Ходы заканчиваются';document.getElementById('modalText').textContent='Посмотри наградную рекламу и получи +5 ходов или продолжи позже.';document.getElementById('modal').classList.add('show')}
 function showShop(){show('shop')}
-function toggleVibration(){state.vibration=state.vibration===false; if(window.LUMEN_SAVE_SETTINGS)window.LUMEN_SAVE_SETTINGS({vibration:state.vibration}); save(); const vb=document.getElementById('vibrationBtn');if(vb)vb.textContent=state.vibration?'📳 ON':'📴 OFF'; if(state.vibration)haptic(18)}
-function showSettings(){show('settings');document.querySelectorAll('.langrow button').forEach(b=>b.classList.remove('active'));const x=document.getElementById(state.lang);if(x)x.classList.add('active');const sb=document.getElementById('soundBtn');if(sb)sb.textContent=state.sound?'🔊 ON':'🔇 OFF';const vb=document.getElementById('vibrationBtn');if(vb)vb.textContent=(state.vibration!==false)?'📳 ON':'📴 OFF'}
-function toggleSound(){state.sound=!state.sound; if(window.LUMEN_SAVE_SETTINGS)window.LUMEN_SAVE_SETTINGS({sound:state.sound}); save(); const sb=document.getElementById('soundBtn');if(sb)sb.textContent=state.sound?'🔊 ON':'🔇 OFF'; beep(state.sound?700:260,.05)}
-function setLang(lang){state.lang=lang;save();applyLang();toast('Language: '+lang)}
+function toggleVibration(){state.vibration=state.vibration===false; if(window.LUMEN_SAVE_SETTINGS)window.LUMEN_SAVE_SETTINGS({vibration:state.vibration}); save(); updateSettingsButtons(); if(state.vibration)haptic(18)}
+function updateSettingsButtons(){const d=tr[state.lang]||tr.ru;const sb=document.getElementById('soundBtn');if(sb)sb.textContent=state.sound?'🔊 '+d.on:'🔇 '+d.off;const vb=document.getElementById('vibrationBtn');if(vb)vb.textContent=(state.vibration!==false)?'📳 '+d.on:'📴 '+d.off}function showSettings(){show('settings');document.querySelectorAll('.langrow button').forEach(b=>b.classList.remove('active'));const x=document.getElementById(state.lang);if(x)x.classList.add('active');updateSettingsButtons()}
+function toggleSound(){state.sound=!state.sound; if(window.LUMEN_SAVE_SETTINGS)window.LUMEN_SAVE_SETTINGS({sound:state.sound}); save(); updateSettingsButtons(); beep(state.sound?700:260,.05)}
+function setLang(lang){state.lang=lang;save();applyLang();updateSettingsButtons();document.querySelectorAll('.langrow button').forEach(b=>b.classList.remove('active'));document.getElementById(lang)?.classList.add('active')}
 function applyLang(){document.querySelectorAll('[data-i18n]').forEach(e=>{const k=e.getAttribute('data-i18n');e.textContent=tr[state.lang][k]||e.textContent})}
 function buyMoves(n){state.coins+=Math.floor(n/50);save();toast('Демо: +'+Math.floor(n/50)+' 💎')}
 function removeAds(){state.adsRemoved=true;save();toast('Демо: реклама отключена')}
